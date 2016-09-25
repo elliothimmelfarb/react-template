@@ -1,6 +1,7 @@
 const typesArray =
   [
-    'THING_DO',
+    'GET_ALL_THINGS',
+    'REQUEST_ALL_THINGS',
   ];
 
 const Types = {};

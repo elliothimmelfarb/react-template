@@ -3,6 +3,8 @@ import toastr from 'toastr';
 
 const API = {};
 
+console.log('hey')
+
 API.getAll = () =>
   get({
     url: '/api/things',

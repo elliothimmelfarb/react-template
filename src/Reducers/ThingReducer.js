@@ -2,11 +2,12 @@ import Types from '../Actions/Types';
 
 const INITIAL_STATE = [];
 
-const doThing = state =>
-  state;
+const requestAllThings = (state, action) =>
+  state.concat(action.thing)
+
 
 const ACTION_HANDLERS = {
-  [Types.THING_DO]: doThing,
+  [Types.REQUEST_ALL_THINGS]: requestAllThings,
 };
 
 function createReducer(initialState, handlers) {

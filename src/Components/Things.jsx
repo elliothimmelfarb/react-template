@@ -1,11 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import Actions from '../Actions/Creators'
 
-const Things = () => (
-  <div>
+const Things = ({ getAllThings }) => (
     <div>
-      Things!
+      <div>
+        Things!
+      </div>
+      <button onClick={getAllThings}>
+        get all
+      </button>
     </div>
-  </div>
-);
+  );
 
-export default Things;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllThings: () => {
+      dispatch(Actions.getAllThings())
+      console.log('heyyo') 
+    },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Things)

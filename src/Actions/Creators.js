@@ -1,10 +1,14 @@
 import Types from './Types';
 
-const doThing = thing => ({
-  thing,
-  type: Types.THING_DO,
+const getAllThings = () => ({
+  type: Types.GET_ALL_THINGS,
+});
+
+const requestAllThings = () => ({
+  type: Types.REQUEST_ALL_THINGS,
 });
 
 export default {
-  doThing,
+  getAllThings,
+  requestAllThings,
 };

@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects';
-import ThingSaga from './ThingSaga';
+import GetAllThings from './GetAllThingsSaga';
 
 export default function* rootSaga() {
-  yield fork(ThingSaga);
+  yield fork(GetAllThings);
 }
