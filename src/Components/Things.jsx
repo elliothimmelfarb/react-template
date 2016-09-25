@@ -1,25 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import Actions from '../Actions/Creators'
+import { connect } from 'react-redux';
+import Actions from '../Actions/Creators';
 
 const Things = ({ getAllThings }) => (
+  <div>
     <div>
-      <div>
-        Things!
-      </div>
-      <button onClick={getAllThings}>
-        get all
-      </button>
+      Things!
     </div>
-  );
+    <button onClick={getAllThings}>
+      get all
+    </button>
+  </div>
+);
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAllThings: () => {
-      dispatch(Actions.getAllThings())
-      console.log('heyyo') 
-    },
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getAllThings: () => {
+    dispatch(Actions.getAllThings());
+  },
+});
 
-export default connect(null, mapDispatchToProps)(Things)
+
+export default connect(null, mapDispatchToProps)(Things);

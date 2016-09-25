@@ -1,14 +1,11 @@
-const typesArray =
-  [
-    'GET_ALL_THINGS',
-    'REQUEST_ALL_THINGS',
-  ];
+import actionList from './ActionList';
+
+//  Add new actions in ActionList.js
 
 const Types = {};
-
-//  make types object
-for (const type of typesArray) {
+actionList.forEach((el) => {
+  const type = el[0];
   Types[type] = type;
-}
+});
 
 export default Types;

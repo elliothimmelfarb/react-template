@@ -3,7 +3,7 @@ import Types from '../Actions/Types';
 const INITIAL_STATE = [];
 
 const requestAllThings = (state, action) =>
-  state.concat(action.thing)
+  state.concat(action.thing);
 
 
 const ACTION_HANDLERS = {

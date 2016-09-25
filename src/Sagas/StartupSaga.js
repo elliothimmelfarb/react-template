@@ -10,7 +10,7 @@ export default () => {
 
   function* watcher() {
     for (;;) {
-      yield* takeEvery(Types.GET_ALL_THINGS, worker);
+      yield* takeEvery(Types.APP_STARTUP, worker);
     }
   }
 
