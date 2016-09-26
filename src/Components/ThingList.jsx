@@ -12,9 +12,9 @@ let style = {
 }
 
 const ThingList = ({ things, removeThing }) => {
-  let thingElements = things.map(el =>
+  let thingElements = things.map((el, ind) =>
     (
-      <div style={style.thing}>
+      <div key={ind} style={style.thing}>
         <a>
           {el.name}
         </a>

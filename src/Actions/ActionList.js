@@ -2,10 +2,15 @@
 //  Followed by the names of payload variables
 
 export default [
+  ['APP_STARTUP'],
+
   ['GET_ALL_THINGS'],
-  ['REQUEST_ALL_THINGS'],
-  ['STARTUP'],
-  ['CREATE_THING'],
-  ['REMOVE_THING'],
+  ['GET_ALL_THINGS_SUCCESS','things'],
+
+  ['CREATE_THING', 'thingName'],
+  ['CREATE_THING_SUCCESS', 'thing'],
+
+  ['REMOVE_THING', 'thingId'],
+  ['REMOVE_THING_SUCCESS','thing'],
 ];
 

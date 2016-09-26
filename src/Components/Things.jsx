@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Actions from '../Actions/Creators';
 import ThingList from './ThingList';
+import OneFieldForm from './OneFieldForm';
 
-const Things = ({ getAllThings, removeThing, things }) => (
+const Things = ({ getAllThings, createThing, removeThing, things }) => (
   <div>
     <ThingList things={things} removeThing={removeThing} />
     <button onClick={getAllThings}>
       get all
     </button>
-    <AddThingForm createThing={createThing} />
+    <OneFieldForm handleSubmit={createThing} />
   </div>
 );
 

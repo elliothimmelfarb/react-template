@@ -2,20 +2,17 @@ import { put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 import Types from '../Actions/Types';
 import Actions from '../Actions/Creators';
+import API from '../API';
 
-export default () => {
-  function* worker() {
-    yield put(Actions.requestAllThings());
+function* worker() {
+  let things = yield API.getAll();
+  yield put(Actions.getAllThingsSuccess(things));
+}
+
+function* watcher() {
+  for (;;) {
+    yield* takeEvery(Types.GET_ALL_THINGS, worker);
   }
+}
 
-  function* watcher() {
-    for (;;) {
-      yield* takeEvery(Types.GET_ALL_THINGS, worker);
-    }
-  }
-
-  return {
-    watcher,
-    worker,
-  };
-};
+export default watcher;
