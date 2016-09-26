@@ -7,7 +7,7 @@ API.getAll = () =>
   get({
     url: '/api/things',
   })
-  .then(res => res.data)
+  .then(res => res)
   .catch(toastr.warning);
 
 API.addOne = thing =>
@@ -15,15 +15,15 @@ API.addOne = thing =>
     url: '/api/things',
     data: thing,
   })
-  .then(res => res.data)
+  .then(res => res)
   .catch(toastr.warning);
 
-API.removeOne = thing =>
+API.removeOne = thingId =>
   ajax({
     method: 'DELETE',
-    url: `/api/things/${thing._id}`,
+    url: `/api/things/${thingId}`,
   })
-  .then(res => res.data)
+  .then(res => res)
   .catch(toastr.warning);
 
 API.editOne = thing =>
@@ -32,7 +32,7 @@ API.editOne = thing =>
     url: `/api/things/${thing._id}`,
     data: thing,
   })
-  .then(res => res.data)
+  .then(res => res)
   .catch(toastr.warning);
 
 export default API;

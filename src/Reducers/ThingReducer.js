@@ -5,12 +5,12 @@ const INITIAL_STATE = [];
 const getAllThingsSuccess = (state, action) =>
   action.things || [];
 
-const createThingSuccess = (state, action) => {
+const createThingSuccess = (state, action) =>
   state.concat(action.thing);
-}
+
 
 const removeThingSuccess = (state, action) =>
-  state.filter(el => el._id == action.thing._id);
+  state.filter(el => el._id !== action.thing._id);
 
 const ACTION_HANDLERS = {
   [Types.GET_ALL_THINGS_SUCCESS]: getAllThingsSuccess,

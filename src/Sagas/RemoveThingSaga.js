@@ -5,7 +5,7 @@ import Actions from '../Actions/Creators';
 import API from '../API';
 
 function* worker(action) {
-  let removedThing = yield API.removeOne(action.thingId);
+  const removedThing = yield API.removeOne(action.thingId);
   yield put(Actions.removeThingSuccess(removedThing));
 }
 
