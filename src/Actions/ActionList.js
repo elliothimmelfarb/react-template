@@ -4,6 +4,8 @@
 export default [
   ['GET_ALL_THINGS'],
   ['REQUEST_ALL_THINGS'],
-  ['REQUEST_ALL_THINGS'],
+  ['STARTUP'],
+  ['CREATE_THING'],
+  ['REMOVE_THING'],
 ];
 
