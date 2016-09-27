@@ -10,6 +10,9 @@ export default [
   ['CREATE_THING', 'thingName'],
   ['CREATE_THING_SUCCESS', 'thing'],
 
+  ['EDIT_THING', 'editedThing'],
+  ['EDIT_THING_SUCCESS','thing'],
+
   ['REMOVE_THING', 'thingId'],
   ['REMOVE_THING_SUCCESS','thing'],
 ];

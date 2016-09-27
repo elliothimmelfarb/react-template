@@ -1,28 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Actions from '../Actions/Creators';
+import React, { PropTypes } from 'react';
+import Thing from './Thing';
 
-let style = {
-  thingList: {
-    border: '2px solid black',
-  },
-  thing: {
-    color: 'red',
-  },
-}
-
-const ThingList = ({ things, removeThing }) => {
-  let thingElements = things.map((el, ind) =>
-    (
-      <div key={ind} style={style.thing}>
-        <a>
-          {el.name}
-        </a>
-        <button onClick={() => removeThing(el._id)}>
-          Remove
-        </button>
-      </div>
-    )
+const ThingList = ({ things, editThing, removeThing }) => {
+  const thingElements = things.map((el, ind) =>
+    (<div key={ind}>
+      <Thing data={el} removeThing={removeThing} editThing={editThing} />
+    </div>)
   );
 
   return (
@@ -30,6 +13,12 @@ const ThingList = ({ things, removeThing }) => {
       {thingElements}
     </div>
   );
-}
+};
+
+ThingList.propTypes({
+  editThing: PropTypes.func.required,
+  removeThing: PropTypes.func.required,
+  things: PropTypes.array.required,
+});
 
 export default ThingList;

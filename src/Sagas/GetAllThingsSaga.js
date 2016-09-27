@@ -5,7 +5,7 @@ import Actions from '../Actions/Creators';
 import API from '../API';
 
 function* worker() {
-  let things = yield API.getAll();
+  const things = yield API.getAll();
   yield put(Actions.getAllThingsSuccess(things));
 }
 

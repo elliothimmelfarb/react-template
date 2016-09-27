@@ -1,48 +1,58 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Actions from '../Actions/Creators';
-
-let style = {
-  oneFieldForm: {
-    backgroundColor: 'yellow',
-  },
-}
+import React, { PropTypes } from 'react';
 
 class OneFieldForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: this.props.defaultValue || '',
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(e) {
-    console.log('newVal',e.target.value)
     this.setState({
       value: e.target.value,
-    })
+    });
   }
 
   onFormSubmit(e) {
     e.preventDefault();
     this.props.handleSubmit(this.state.value);
+    this.setState({
+      value: '',
+    });
   }
 
   render() {
+    //  built-in support for cancel button
+    const cancelButton = this.props.handleCancel ?
+      (<button onClick={this.props.handleCancel}>
+        {this.props.cancelText || 'Cancel'}
+      </button>)
+      : <span />;
+
     return (
-      <form onSubmit={this.onFormSubmit} style={style.oneFieldForm}>
+      <form onSubmit={this.onFormSubmit}>
         <input
+          value={this.state.value}
           type="text"
           onChange={this.onInputChange}
+          required={this.props.required}
         />
-        <button>
-          Add
+        <button type="submit">
+          {this.props.buttonText}
         </button>
+        {cancelButton}
       </form>
-    )
+    );
   }
 }
 
-export default  OneFieldForm;
+OneFieldForm.propTypes({
+  defaultValue: PropTypes.string,
+  handleCancel: PropTypes.func,
+  required: PropTypes.bool,
+});
+
+export default OneFieldForm;
