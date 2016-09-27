@@ -40,59 +40,51 @@ class Thing extends React.Component {
 
 
   render() {
-    const thingElement = [];
+    const buttons = this.state.isEditing ?
+      <span />
+      : (<div>
+        <button onClick={this.editButtonHandler}>
+          Edit
+        </button>
+        <button onClick={this.removeButtonHandler}>
+          Remove
+        </button>
+      </div>);
 
-    this.props.data.keys.forEach((key) => {
-      const buttons = this.state.isEditing ?
-        <span />
-        : (<div>
-          <button onClick={this.editButtonHandler}>
-            Edit
-          </button>
-          <button onClick={this.removeButtonHandler}>
-            Remove
-          </button>
-        </div>);
-
-      //  don't render mongo fields
-      if (key !== '__v' && key !== '_id') {
-        const val = this.props.data[key] && this.props.data[key].toString();
-        const value = this.state.isEditing ?
-          <OneFieldForm
-            handleSubmit={this.confirmButtonHandler}
-            handleCancel={this.cancelButtonHandler}
-            buttonText="OK"
-            defaultValue={val}
-            required
-          />
-          : val;
-
-        thingElement.push(
-          (<div key={key}>
-            <span>
-              {key}:&nbsp;
-            </span>
-            <span>
-              {value}
-            </span>
-            {buttons}
-          </div>)
-        );
-      }
-    });
+    const value = this.state.isEditing ?
+      <OneFieldForm
+        handleSubmit={this.confirmButtonHandler}
+        handleCancel={this.cancelButtonHandler}
+        buttonText="OK"
+        defaultValue={this.props.data.name}
+        required
+      />
+      : this.props.data.name;
 
     return (
       <div>
-        {thingElement}
+        (<div>
+          <span>
+            Name:&nbsp;
+          </span>
+          <span>
+            {value}
+          </span>
+          {buttons}
+        </div>)
+
       </div>
     );
   }
 }
 
-Thing.propTypes({
-  editThing: PropTypes.func.required,
-  removeThing: PropTypes.func.required,
-  data: PropTypes.object.required,
-});
+Thing.propTypes = {
+  editThing: PropTypes.func.isRequired,
+  removeThing: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    _id: PropTypes.string,
+  }).isRequired,
+};
 
 export default Thing;

@@ -15,10 +15,10 @@ const ThingList = ({ things, editThing, removeThing }) => {
   );
 };
 
-ThingList.propTypes({
-  editThing: PropTypes.func.required,
-  removeThing: PropTypes.func.required,
-  things: PropTypes.array.required,
-});
+ThingList.propTypes = {
+  editThing: PropTypes.func.isRequired,
+  removeThing: PropTypes.func.isRequired,
+  things: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default ThingList;

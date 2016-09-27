@@ -49,10 +49,13 @@ class OneFieldForm extends React.Component {
   }
 }
 
-OneFieldForm.propTypes({
-  defaultValue: PropTypes.string,
+OneFieldForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  buttonText: PropTypes.string.isRequired,
   handleCancel: PropTypes.func,
+  cancelText: PropTypes.string,
+  defaultValue: PropTypes.string,
   required: PropTypes.bool,
-});
+};
 
 export default OneFieldForm;
