@@ -63,7 +63,7 @@ class Thing extends React.Component {
 
     return (
       <div>
-        (<div>
+        <div>
           <span>
             Name:&nbsp;
           </span>
@@ -71,7 +71,7 @@ class Thing extends React.Component {
             {value}
           </span>
           {buttons}
-        </div>)
+        </div>
 
       </div>
     );
