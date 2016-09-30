@@ -5,14 +5,15 @@ const build = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 3000;
 
 const devConfig = {
-  devtool: 'source-map',
+  devtool: 'eval-cheap-module-sourcemap',
   entry: [
     'webpack-hot-middleware/client?reload=true',
     './src/index',
   ],
   output: {
-    path: path.resolve(__dirname, '/bin'),
+    path: path.resolve(__dirname, 'bin'),
     publicPath: `http://localhost:${port}/`,
+    pathInfo: true,
     filename: 'bundle.js',
   },
   plugins: [
@@ -24,7 +25,7 @@ const devConfig = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        exclude: ['node_modules'],
+        include: path.resolve(__dirname, 'src'),
       },
       {
         test: /\.(png|gif|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -37,17 +38,17 @@ const devConfig = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['', '.js', '.jsx'],
   },
 };
 
 const prodConfig = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: [
     './src/index',
   ],
   output: {
-    path: path.join(__dirname, 'production/client'),
+    path: path.join(__dirname, 'bin'),
     publicPath: `http://localhost:${port}/`,
     filename: 'bundle.js',
   },
@@ -59,7 +60,7 @@ const prodConfig = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        exclude: ['node_modules'],
+        include: path.resolve(__dirname, 'src'),
       },
       {
         test: /\.(png|gif|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -72,7 +73,7 @@ const prodConfig = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['', '.js', '.jsx'],
   },
 };
 
