@@ -5,14 +5,15 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const compiler = webpack(config);
 const webpack = require('webpack');
 const hotMiddleware = require('webpack-hot-middleware');
 const devMiddleware = require('webpack-dev-middleware');
 const config = require('../webpack.config');
 
+const compiler = webpack(config);
+
 const PORT = process.env.PORT || 3000;
-const build = process.env.NODE_ENV || 'development';
+const build = process.env.NODE_ENV || 'development'; // Is this being used?
 const app = express();
 
 const api = require('./api');
@@ -44,4 +45,3 @@ app.listen(PORT, (err) => {
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/template', (err) => {
   console.log(err || 'Mongoose connected!');
 });
-
