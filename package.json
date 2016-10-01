@@ -1,8 +1,9 @@
 {
   "name": "react-template",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Bare-Bones",
   "main": "index.js",
+  "repository": "https://github.com/mnbroatch/react-template.git",
   "scripts": {
     "start": "NODE_ENV=development npm-run-all --parallel open:src lint:watch",
     "open:src": "node tools/server.js",
@@ -10,6 +11,11 @@
     "lint:watch": "npm run lint -- --watch --ext .js --ext .jsx --color",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "npm run test -- --watch",
+    "clean-bin": "node_modules/.bin/rimraf ./bin",
+    "copy-tools": "node_modules/.bin/copyfiles -u 1 './tools/**/*' ./bin/",
+    "copy-index": "node_modules/.bin/copyfiles -u 1 './src/index.html' ./bin/",
+    "copy-index": "node_modules/.bin/copyfiles -u 1 './src/index.html' ./bin/",
+    "prebuild": "npm-run-all clean-bin copy-index copy-tools",
     "build": "NODE_ENV=production webpack"
   },
   "author": "Matthew Broatch",
@@ -27,7 +33,7 @@
     "dotenv": "",
     "eslint": "",
     "eslint-config-airbnb": "",
-    "eslint-plugin-import": "",
+    "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "",
     "eslint-plugin-react": "",
     "eslint-watch": "",

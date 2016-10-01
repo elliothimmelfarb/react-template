@@ -48,7 +48,7 @@ const prodConfig = {
     './src/index',
   ],
   output: {
-    path: path.join(__dirname, 'bin'),
+    path: path.join(__dirname, 'bin', 'public'),
     publicPath: `http://localhost:${port}/`,
     filename: 'bundle.js',
   },
