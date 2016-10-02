@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 const api = require('./api');
 
 const PORT = process.env.PORT || 3000;
-const build = process.env.NODE_ENV || 'production';
+const build = process.env.NODE_ENV || 'development';
 console.log(build);
 const app = express();
 
