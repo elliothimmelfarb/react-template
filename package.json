@@ -5,8 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/mnbroatch/react-template.git",
   "scripts": {
-    "start": "NODE_ENV=development npm-run-all --parallel open:src lint:watch",
-    "open:src": "node tools/server.js",
+    "start": "NODE_ENV=production node server.js",
+    "start-dev": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "NODE_ENV=development node tools/server.js",
     "lint": "esw",
     "lint:watch": "npm run lint -- --watch --ext .js --ext .jsx --color",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,8 +15,8 @@
     "clean-bin": "node_modules/.bin/rimraf ./bin/*",
     "copy-tools": "node_modules/.bin/copyfiles -u 1 './tools/**/*' ./bin/",
     "copy-index": "node_modules/.bin/copyfiles -u 1 './src/index.html' ./bin/",
-    "copy-prodTools": "node_modules/.bin/copyfiles -u 1 './prodTools/*' ./bin/",
-    "prebuild": "npm-run-all clean-bin copy-index copy-tools copy-prodTools",
+    "copy-package": "node_modules/.bin/copyfiles './package.json' ./bin/",
+    "prebuild": "npm-run-all clean-bin copy-index copy-tools copy-package",
     "build": "NODE_ENV=production webpack"
   },
   "author": "Matthew Broatch",
