@@ -9,6 +9,7 @@ const webpack = require('webpack');
 const hotMiddleware = require('webpack-hot-middleware');
 const devMiddleware = require('webpack-dev-middleware');
 const config = require('../webpack.config');
+
 const compiler = webpack(config);
 
 const PORT = process.env.PORT || 3000;
