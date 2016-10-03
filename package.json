@@ -1,7 +1,7 @@
 {
   "name": "react-template",
   "version": "1.5.0",
-  "description": "Bare-Bones",
+  "description": "react-template",
   "main": "index.js",
   "repository": "https://github.com/mnbroatch/react-template.git",
   "scripts": {
