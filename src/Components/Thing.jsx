@@ -19,10 +19,9 @@ class Thing extends React.Component {
     });
   }
 
-  confirmButtonHandler(newThingName) {
-    const newThing = Object.assign({}, this.props.data);
-    newThing.name = newThingName;
-    this.props.editThing(newThing);
+  confirmButtonHandler(newThing) {
+    const thingToEdit = Object.assign({}, this.props.data, newThing);
+    this.props.editThing(thingToEdit);
     this.setState({
       isEditing: false,
     });

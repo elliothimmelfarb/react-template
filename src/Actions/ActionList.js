@@ -7,7 +7,7 @@ export default [
   ['GET_ALL_THINGS'],
   ['GET_ALL_THINGS_SUCCESS', 'things'],
 
-  ['CREATE_THING', 'thingName'],
+  ['CREATE_THING', 'thing'],
   ['CREATE_THING_SUCCESS', 'thing'],
 
   ['EDIT_THING', 'editedThing'],
