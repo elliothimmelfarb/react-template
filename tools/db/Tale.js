@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 const taleSchema = new mongoose.Schema({
   author: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
@@ -13,9 +13,8 @@ const taleSchema = new mongoose.Schema({
     required: true,
   },
   chapters: [{
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Chapter',
-    required: true,
   }],
   rating: {
     type: Number,

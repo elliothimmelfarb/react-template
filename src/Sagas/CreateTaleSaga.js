@@ -8,24 +8,21 @@ function* worker(action) {
   //  1) create chapter 1
   //  2) create tale with reference to chapter 1
 
-  console.log('action',action)
-
   const chapterToAdd = {
     text: action.tale.body,
-    title: "chapter 1",
+    title: 'chapter 1',
     number: 1,
     author: '5802ccb0ba7b6e0dd2cdb0df',
     rating: 0,
-  }
+  };
   const addedChapter = yield API.addOneChapter(chapterToAdd);
 
   const taleToAdd = {
     title: action.tale.title,
     author: addedChapter.author,
-    chapters: [addedChapter._id],
+    chapters: [addedChapter._id.toString()],
     rating: 0,
-  }
-  console.log('taleToAdd',taleToAdd)
+  };
 
   const addedTale = yield API.addOneTale(taleToAdd);
   yield put(Actions.createTaleSuccess(addedTale));

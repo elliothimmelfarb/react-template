@@ -9,8 +9,7 @@ router.route('/')
   })
   .post((req, res) => {
     const taleToSave = new Tale(req.body);
-    console.log(taleToSave)
-    taleToSave.save()
+    return taleToSave.save()
       .then(tale => res.send(tale))
       .catch(err => res.status(400).send(err.toString()));
   });

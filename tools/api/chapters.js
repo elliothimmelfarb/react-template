@@ -9,7 +9,6 @@ router.route('/')
   })
   .post((req, res) => {
     const chapterToSave = new Chapter(req.body);
-    console.log('chapterToSave',chapterToSave)
     chapterToSave.save()
       .then(chapter => res.send(chapter))
       .catch(err => res.status(400).send(err));
