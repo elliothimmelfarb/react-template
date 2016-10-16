@@ -18,7 +18,9 @@ class OneFieldForm extends React.Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit(this.state.value);
+    this.props.handleSubmit({
+      name: this.state.value,
+    });
     this.setState({
       value: '',
     });
