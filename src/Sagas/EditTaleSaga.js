@@ -5,13 +5,13 @@ import Actions from '../Actions/Creators';
 import Types from '../Actions/Types';
 
 function* worker(action) {
-  const newThing = yield API.editOne(action.editedThing);
-  yield put(Actions.editThingSuccess(newThing));
+  const newTale = yield API.editOneTale(action.editedTale);
+  yield put(Actions.editTaleSuccess(newTale));
 }
 
 function* watcher() {
   for (;;) {
-    yield* takeEvery(Types.EDIT_THING, worker);
+    yield* takeEvery(Types.EDIT_TALE, worker);
   }
 }
 

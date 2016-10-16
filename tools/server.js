@@ -50,6 +50,6 @@ app.listen(PORT, (err) => {
   console.log(err || `server started port ${PORT}`);
 });
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/template', (err) => {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/wreadme', (err) => {
   console.log(err || 'Mongoose connected!');
 });

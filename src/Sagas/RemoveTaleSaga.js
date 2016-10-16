@@ -5,14 +5,13 @@ import Actions from '../Actions/Creators';
 import API from '../API';
 
 function* worker(action) {
-  const thingToAdd = { name: action.thingName };
-  const addedThing = yield API.addOne(thingToAdd);
-  yield put(Actions.createThingSuccess(addedThing));
+  const removedTale = yield API.removeOneTale(action.taleId);
+  yield put(Actions.removeTaleSuccess(removedTale));
 }
 
 function* watcher() {
   for (;;) {
-    yield* takeEvery(Types.CREATE_THING, worker);
+    yield* takeEvery(Types.REMOVE_TALE, worker);
   }
 }
 

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import configureStore from './Store/configureStore';
 import routes from './Navigation/main';
+import './Styles/main.scss';
 
 const store = configureStore();
 

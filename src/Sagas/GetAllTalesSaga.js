@@ -4,14 +4,14 @@ import Types from '../Actions/Types';
 import Actions from '../Actions/Creators';
 import API from '../API';
 
-function* worker(action) {
-  const removedThing = yield API.removeOne(action.thingId);
-  yield put(Actions.removeThingSuccess(removedThing));
+function* worker() {
+  const tales = yield API.getAllTales();
+  yield put(Actions.getAllTalesSuccess(tales));
 }
 
 function* watcher() {
   for (;;) {
-    yield* takeEvery(Types.REMOVE_THING, worker);
+    yield* takeEvery(Types.GET_ALL_TALES, worker);
   }
 }
 

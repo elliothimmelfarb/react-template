@@ -3,36 +3,114 @@ import toastr from 'toastr';
 
 const API = {};
 
-API.getAll = () =>
+
+//  API for tales
+API.getAllTales = () =>
   get({
-    url: '/api/things',
+    url: '/api/tales',
   })
   .then(res => res)
   .catch(toastr.warning);
 
-API.addOne = thing =>
+API.addOneTale = tale =>
   post({
-    url: '/api/things',
-    data: thing,
+    url: '/api/tales',
+    data: tale,
   })
   .then(res => res)
   .catch(toastr.warning);
 
-API.removeOne = thingId =>
+API.removeOneTale = taleId =>
   ajax({
     method: 'DELETE',
-    url: `/api/things/${thingId}`,
+    url: `/api/tales/${taleId}`,
   })
   .then(res => res)
   .catch(toastr.warning);
 
-API.editOne = thing =>
+API.editOneTale = tale =>
   ajax({
     method: 'PUT',
-    url: `/api/things/${thing._id}`,
-    data: thing,
+    url: `/api/tales/${tale._id}`,
+    data: tale,
   })
   .then(res => res)
   .catch(toastr.warning);
 
+
+//  API for chapters
+API.getAllChapters = () =>
+  get({
+    url: '/api/chapters',
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.addOneChapter = chapter =>
+  post({
+    url: '/api/chapters',
+    data: chapter,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.removeOneChapter = chapterId =>
+  ajax({
+    method: 'DELETE',
+    url: `/api/chapters/${chapterId}`,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.editOneChapter = chapter =>
+  ajax({
+    method: 'PUT',
+    url: `/api/chapters/${chapter._id}`,
+    data: chapter,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.editOneTale = tale =>
+  ajax({
+    method: 'PUT',
+    url: `/api/tales/${tale._id}`,
+    data: tale,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+
+//  API for users
+API.getAllUsers = () =>
+  get({
+    url: '/api/users',
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.addOneUser = user =>
+  post({
+    url: '/api/users',
+    data: user,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.removeOneUser = userId =>
+  ajax({
+    method: 'DELETE',
+    url: `/api/users/${userId}`,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
+API.editOneUser = user =>
+  ajax({
+    method: 'PUT',
+    url: `/api/users/${user._id}`,
+    data: user,
+  })
+  .then(res => res)
+  .catch(toastr.warning);
 export default API;

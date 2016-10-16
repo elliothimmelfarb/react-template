@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import OneFieldForm from './OneFieldForm';
 
-class Thing extends React.Component {
+class Tale extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +19,10 @@ class Thing extends React.Component {
     });
   }
 
-  confirmButtonHandler(newThingName) {
-    const newThing = Object.assign({}, this.props.data);
-    newThing.name = newThingName;
-    this.props.editThing(newThing);
+  confirmButtonHandler(newTaleName) {
+    const newTale = Object.assign({}, this.props.data);
+    newTale.name = newTaleName;
+    this.props.editTale(newTale);
     this.setState({
       isEditing: false,
     });
@@ -35,7 +35,7 @@ class Thing extends React.Component {
   }
 
   removeButtonHandler() {
-    this.props.removeThing(this.props.data._id);
+    this.props.removeTale(this.props.data._id);
   }
 
 
@@ -78,13 +78,13 @@ class Thing extends React.Component {
   }
 }
 
-Thing.propTypes = {
-  editThing: PropTypes.func.isRequired,
-  removeThing: PropTypes.func.isRequired,
+Tale.propTypes = {
+  editTale: PropTypes.func.isRequired,
+  removeTale: PropTypes.func.isRequired,
   data: PropTypes.shape({
     name: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
 
-export default Thing;
+export default Tale;

@@ -4,16 +4,16 @@
 export default [
   ['APP_STARTUP'],
 
-  ['GET_ALL_THINGS'],
-  ['GET_ALL_THINGS_SUCCESS', 'things'],
+  ['GET_ALL_TALES'],
+  ['GET_ALL_TALES_SUCCESS', 'tales'],
 
-  ['CREATE_THING', 'thingName'],
-  ['CREATE_THING_SUCCESS', 'thing'],
+  ['CREATE_TALE', 'tale'],
+  ['CREATE_TALE_SUCCESS', 'tale'],
 
-  ['EDIT_THING', 'editedThing'],
-  ['EDIT_THING_SUCCESS', 'thing'],
+  ['EDIT_TALE', 'editedTale'],
+  ['EDIT_TALE_SUCCESS', 'tale'],
 
-  ['REMOVE_THING', 'thingId'],
-  ['REMOVE_THING_SUCCESS', 'thing'],
+  ['REMOVE_TALE', 'taleId'],
+  ['REMOVE_TALE_SUCCESS', 'tale'],
 ];
 
