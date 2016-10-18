@@ -5,6 +5,13 @@ const API = {};
 
 
 //  API for tales
+API.getTopTales = () =>
+  get({
+    url: '/api/tales/top',
+  })
+  .then(res => res)
+  .catch(toastr.warning);
+
 API.getAllTales = () =>
   get({
     url: '/api/tales',

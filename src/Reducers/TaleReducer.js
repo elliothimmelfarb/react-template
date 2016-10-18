@@ -1,25 +1,42 @@
 import Types from '../Actions/Types';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {
+  allTales: [],
+  topTales: [],
+};
 
 const getAllTalesSuccess = (state, action) =>
-  action.tales || [];
+  Object.assign({}, state, {
+    allTales: action.tales,
+  });
+
+const getTopTalesSuccess = (state, action) =>
+  Object.assign({}, state, {
+    topTales: action.tales,
+  });
 
 const createTaleSuccess = (state, action) =>
-  state.concat(action.tale);
+  Object.assign({}, state, {
+    allTales: state.allTales.concat(action.tale),
+  });
 
 const editTaleSuccess = (state, action) => {
-  const newState = state.slice();
-  const index = state.findIndex(el => el._id === action.tale._id);
+  const newState = state.allTales.slice();
+  const index = state.allTales.findIndex(el => el._id === action.tale._id);
   newState[index] = action.tale;
-  return newState;
+  return Object.assign({}, state, {
+    allTales: newState,
+  })
 };
 
 const removeTaleSuccess = (state, action) =>
-  state.filter(el => el._id !== action.tale._id);
+  Object.assign({}, state, {
+    allTales: state.allTales.filter(el => el._id !== action.tale._id),
+  });
 
 const ACTION_HANDLERS = {
   [Types.GET_ALL_TALES_SUCCESS]: getAllTalesSuccess,
+  [Types.GET_TOP_TALES_SUCCESS]: getTopTalesSuccess,
   [Types.CREATE_TALE_SUCCESS]: createTaleSuccess,
   [Types.EDIT_TALE_SUCCESS]: editTaleSuccess,
   [Types.REMOVE_TALE_SUCCESS]: removeTaleSuccess,

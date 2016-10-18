@@ -4,19 +4,26 @@ import Actions from '../Actions/Creators';
 import IntroductionArea from './IntroductionArea';
 import TaleListArea from './TaleListArea';
 
-const HomePage = ({ editTale, removeTale, tales }) =>
-  (<div className="home-page">
-    <IntroductionArea />
-    <TaleListArea
-      editTale={editTale}
-      removeTale={removeTale}
-      tales={tales}
-    />
-  </div>);
+class HomePage extends React.Component {
+  componentDidMount() {
+    this.props.getTopTales();
+  }
+
+  render () {
+    return (<div className="home-page">
+      <IntroductionArea />
+      <TaleListArea
+        editTale={this.props.editTale}
+        removeTale={this.props.removeTale}
+        tales={this.props.tales}
+      />
+    </div>);
+  }
+}
 
 
 const mapStateToProps = state => ({
-  tales: state.tales,
+  tales: state.tales.topTales,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,6 +32,9 @@ const mapDispatchToProps = dispatch => ({
   },
   editTale: (newTale) => {
     dispatch(Actions.editTale(newTale));
+  },
+  getTopTales: (newTale) => {
+    dispatch(Actions.getTopTales(newTale));
   },
 });
 

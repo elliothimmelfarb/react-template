@@ -40,39 +40,16 @@ class Tale extends React.Component {
 
 
   render() {
-    const buttons = this.state.isEditing ?
-      <span />
-      : (<div>
-        <button onClick={this.editButtonHandler}>
-          Edit
-        </button>
-        <button onClick={this.removeButtonHandler}>
-          Remove
-        </button>
-      </div>);
-
-    const value = this.state.isEditing ?
-      <OneFieldForm
-        handleSubmit={this.confirmButtonHandler}
-        handleCancel={this.cancelButtonHandler}
-        buttonText="OK"
-        defaultValue={this.props.data.name}
-        required
-      />
-      : this.props.data.name;
-
     return (
       <div>
         <div>
           <span>
-            Name:&nbsp;
+            Title: {this.props.data.title}
           </span>
           <span>
-            {value}
+            {this.props.data.text}
           </span>
-          {buttons}
         </div>
-
       </div>
     );
   }

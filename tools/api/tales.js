@@ -1,6 +1,12 @@
 const router = require('express').Router();
 const Tale = require('../db/Tale');
 
+router.route('/top')
+  .get((req, res) =>
+    Tale.find({}).sort({rating: -1}).limit(3)
+      .then(tales => res.send(tales))
+      .catch(err => res.status(400).send(err));
+
 router.route('/')
   .get((req, res) => {
     Tale.find({})
