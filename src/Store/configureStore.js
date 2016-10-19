@@ -19,5 +19,7 @@ export default () => {
 
   sagaMiddleware.run(sagas);
 
+  store.dispatch(Actions.getAllThings());
+
   return store;
 };

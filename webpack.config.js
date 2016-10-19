@@ -28,20 +28,11 @@ const devConfig = {
         include: path.resolve(__dirname, 'src'),
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css',
-          'postcss',
-          'sass',
-        ],
-      },
-      {
-        test: /\.(png|gif|jpg|ttf|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(png|gif|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url?limit=10000?',
       },
       {
-        test: /\.(woff2?|eot|svg)(\?[\s\S]+)?$/,
+        test: /\.(woff2?|ttf|eot|svg)(\?[\s\S]+)?$/,
         loader: 'file?emitFile=false',
       },
     ],
@@ -70,15 +61,6 @@ const prodConfig = {
         test: /\.jsx?$/,
         loader: 'babel',
         include: path.resolve(__dirname, 'src'),
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css',
-          'postcss',
-          'sass',
-        ],
       },
       {
         test: /\.(png|gif|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

@@ -4,7 +4,7 @@ import Types from '../Actions/Types';
 import Actions from '../Actions/Creators';
 
 function* worker() {
-  yield put(Actions.getAllTales());
+  yield put(Actions.getAllThings());
 }
 
 function* watcher() {

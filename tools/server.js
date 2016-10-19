@@ -15,8 +15,8 @@ console.log(build);
 const app = express();
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 
@@ -50,6 +50,6 @@ app.listen(PORT, (err) => {
   console.log(err || `server started port ${PORT}`);
 });
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/wreadme', (err) => {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/template', (err) => {
   console.log(err || 'Mongoose connected!');
 });

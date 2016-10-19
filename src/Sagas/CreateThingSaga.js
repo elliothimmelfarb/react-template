@@ -4,14 +4,15 @@ import Types from '../Actions/Types';
 import Actions from '../Actions/Creators';
 import API from '../API';
 
-function* worker() {
-  const tales = yield API.getTopTales();
-  yield put(Actions.getTopTalesSuccess(tales));
+function* worker(action) {
+  const thingToAdd = action.thing;
+  const addedThing = yield API.addOne(thingToAdd);
+  yield put(Actions.createThingSuccess(addedThing));
 }
 
 function* watcher() {
   for (;;) {
-    yield* takeEvery(Types.GET_TOP_TALES, worker);
+    yield* takeEvery(Types.CREATE_THING, worker);
   }
 }
 

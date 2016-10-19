@@ -35,9 +35,8 @@ class OneFieldForm extends React.Component {
       : <span />;
 
     return (
-      <form onSubmit={this.onFormSubmit} className="one-field-form">
+      <form onSubmit={this.onFormSubmit}>
         <input
-          className="one-field-form__input"
           value={this.state.value}
           type="text"
           onChange={this.onInputChange}

@@ -1,10 +1,6 @@
 const router = require('express').Router();
-const tales = require('./tales');
-const chapters = require('./chapters');
-const users = require('./users');
+const things = require('./things');
 
-router.use('/tales', tales);
-router.use('/chapters', chapters);
-router.use('/users', users);
+router.use('/things', things);
 
 module.exports = router;

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import tales from './TaleReducer';
+import things from './ThingReducer';
 
 const appReducer = combineReducers({
-  tales,
+  things,
 });
 
 const rootReducer = (state, action) =>

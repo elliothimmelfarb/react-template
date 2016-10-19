@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import OneFieldForm from './OneFieldForm';
 
-class Tale extends React.Component {
+class Thing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +19,9 @@ class Tale extends React.Component {
     });
   }
 
-  confirmButtonHandler(newTaleName) {
-    const newTale = Object.assign({}, this.props.data);
-    newTale.name = newTaleName;
-    this.props.editTale(newTale);
+  confirmButtonHandler(newThing) {
+    const thingToEdit = Object.assign({}, this.props.data, newThing);
+    this.props.editThing(thingToEdit);
     this.setState({
       isEditing: false,
     });
@@ -35,33 +34,56 @@ class Tale extends React.Component {
   }
 
   removeButtonHandler() {
-    this.props.removeTale(this.props.data._id);
+    this.props.removeThing(this.props.data._id);
   }
 
 
   render() {
+    const buttons = this.state.isEditing ?
+      <span />
+      : (<div>
+        <button onClick={this.editButtonHandler}>
+          Edit
+        </button>
+        <button onClick={this.removeButtonHandler}>
+          Remove
+        </button>
+      </div>);
+
+    const value = this.state.isEditing ?
+      <OneFieldForm
+        handleSubmit={this.confirmButtonHandler}
+        handleCancel={this.cancelButtonHandler}
+        buttonText="OK"
+        defaultValue={this.props.data.name}
+        required
+      />
+      : this.props.data.name;
+
     return (
       <div>
         <div>
           <span>
-            Title: {this.props.data.title}
+            Name:&nbsp;
           </span>
           <span>
-            {this.props.data.text}
+            {value}
           </span>
+          {buttons}
         </div>
+
       </div>
     );
   }
 }
 
-Tale.propTypes = {
-  editTale: PropTypes.func.isRequired,
-  removeTale: PropTypes.func.isRequired,
+Thing.propTypes = {
+  editThing: PropTypes.func.isRequired,
+  removeThing: PropTypes.func.isRequired,
   data: PropTypes.shape({
     name: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
 
-export default Tale;
+export default Thing;
