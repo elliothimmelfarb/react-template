@@ -5,7 +5,6 @@ import Actions from '../Actions/Creators';
 import Types from '../Actions/Types';
 
 function* worker(action) {
-  console.log('bah',action.editedThing)
   const newThing = yield API.editOne(action.editedThing);
   yield put(Actions.editThingSuccess(newThing));
 }
